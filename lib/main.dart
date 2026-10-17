@@ -9,20 +9,20 @@ class KantinApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const terracotta = Color(0xFFB94E32);
+    const navy = Color(0xFF173B63);
     return MaterialApp(
       title: 'Kantin Bu Sari',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: terracotta,
-          surface: const Color(0xFFFFFBF5),
+          seedColor: navy,
+          surface: const Color(0xFFF5F7FA),
         ),
-        scaffoldBackgroundColor: const Color(0xFFFFFBF5),
+        scaffoldBackgroundColor: const Color(0xFFF5F7FA),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFFFFBF5),
-          foregroundColor: Color(0xFF30251F),
+          backgroundColor: Color(0xFFF5F7FA),
+          foregroundColor: Color(0xFF172B43),
           elevation: 0,
         ),
         inputDecorationTheme: InputDecorationTheme(

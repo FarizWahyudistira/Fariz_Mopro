@@ -71,10 +71,10 @@ class _MenuListPageState extends State<MenuListPage> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: const Color(0xFFFFE4D5),
+                color: const Color(0xFFE1EAF4),
                 borderRadius: BorderRadius.circular(13),
               ),
-              child: const Icon(Icons.restaurant, color: Color(0xFFB94E32)),
+              child: const Icon(Icons.restaurant, color: Color(0xFF173B63)),
             ),
             const SizedBox(width: 10),
             const Column(
@@ -114,7 +114,7 @@ class _MenuListPageState extends State<MenuListPage> {
                     padding: const EdgeInsets.all(22),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFB94E32), Color(0xFFD8794E)],
+                        colors: [Color(0xFF173B63), Color(0xFF315C86)],
                       ),
                       borderRadius: BorderRadius.circular(24),
                     ),
@@ -154,7 +154,15 @@ class _MenuListPageState extends State<MenuListPage> {
                             ],
                           ),
                         ),
-                        const Text('🍱', style: TextStyle(fontSize: 58)),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.asset(
+                            'assets/images/nasi_ayam_bakar.jpg',
+                            width: 86,
+                            height: 92,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -206,7 +214,7 @@ class _MenuListPageState extends State<MenuListPage> {
                             selected: _category == category,
                             onSelected: (_) =>
                                 setState(() => _category = category),
-                            selectedColor: const Color(0xFFFFDCCB),
+                            selectedColor: const Color(0xFFDCE7F3),
                             side: BorderSide.none,
                           ),
                         )
@@ -245,23 +253,36 @@ class _MenuListPageState extends State<MenuListPage> {
                 ),
               )
             else
-              SliverPadding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 110),
-                sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => _MenuCard(
-                      item: filtered[index],
-                      onTap: () => _openDetail(filtered[index]),
+              SliverLayoutBuilder(
+                builder: (context, constraints) {
+                  final width = constraints.crossAxisExtent - 40;
+                  final columns = width >= 1500
+                      ? 5
+                      : width >= 1100
+                      ? 4
+                      : width >= 700
+                      ? 3
+                      : 2;
+
+                  return SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 110),
+                    sliver: SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => _MenuCard(
+                          item: filtered[index],
+                          onTap: () => _openDetail(filtered[index]),
+                        ),
+                        childCount: filtered.length,
+                      ),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: columns,
+                        crossAxisSpacing: 14,
+                        mainAxisSpacing: 14,
+                        mainAxisExtent: 290,
+                      ),
                     ),
-                    childCount: filtered.length,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    childAspectRatio: .72,
-                  ),
-                ),
+                  );
+                },
               ),
           ],
         ),
@@ -274,7 +295,7 @@ class _MenuListPageState extends State<MenuListPage> {
                 child: FilledButton(
                   onPressed: _openOrder,
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFFB94E32),
+                    backgroundColor: const Color(0xFF173B63),
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -340,10 +361,14 @@ class _MenuCard extends StatelessWidget {
                       top: Radius.circular(20),
                     ),
                   ),
-                  child: Center(
-                    child: Text(
-                      item.emoji,
-                      style: const TextStyle(fontSize: 58),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                    child: Image.asset(
+                      item.image,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -365,7 +390,7 @@ class _MenuCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFB94E32),
+                          color: Color(0xFF173B63),
                         ),
                       ),
                     ),
@@ -394,7 +419,7 @@ class _MenuCard extends StatelessWidget {
                       child: Text(
                         rupiah(item.price),
                         style: const TextStyle(
-                          color: Color(0xFFB94E32),
+                          color: Color(0xFF173B63),
                           fontWeight: FontWeight.w800,
                           fontSize: 13,
                         ),

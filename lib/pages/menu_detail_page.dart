@@ -41,15 +41,13 @@ class _MenuDetailPageState extends State<MenuDetailPage> {
                     decoration: BoxDecoration(
                       color: item.color,
                       borderRadius: BorderRadius.circular(28),
+                      image: DecorationImage(
+                        image: AssetImage(item.image),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     child: Stack(
                       children: [
-                        Center(
-                          child: Text(
-                            item.emoji,
-                            style: const TextStyle(fontSize: 130),
-                          ),
-                        ),
                         Positioned(
                           left: 16,
                           top: 16,
@@ -99,7 +97,7 @@ class _MenuDetailPageState extends State<MenuDetailPage> {
                     rupiah(item.price),
                     style: const TextStyle(
                       fontSize: 22,
-                      color: Color(0xFFB94E32),
+                      color: Color(0xFF173B63),
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -117,12 +115,12 @@ class _MenuDetailPageState extends State<MenuDetailPage> {
                   Container(
                     padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF3EEE8),
+                      color: const Color(0xFFEDF2F7),
                       borderRadius: BorderRadius.circular(17),
                     ),
                     child: const Row(
                       children: [
-                        Icon(Icons.schedule, color: Color(0xFFB94E32)),
+                        Icon(Icons.schedule, color: Color(0xFF173B63)),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
@@ -144,7 +142,7 @@ class _MenuDetailPageState extends State<MenuDetailPage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3EEE8),
+                        color: const Color(0xFFEDF2F7),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Row(
@@ -185,7 +183,7 @@ class _MenuDetailPageState extends State<MenuDetailPage> {
                           'Tambah · ${rupiah(item.price * _quantity)}',
                         ),
                         style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFFB94E32),
+                          backgroundColor: const Color(0xFF173B63),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),

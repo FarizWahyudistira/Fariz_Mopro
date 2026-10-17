@@ -98,9 +98,14 @@ class _OrderPageState extends State<OrderPage> {
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: entry.key.color,
-                              child: Text(entry.key.emoji),
+                            leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset(
+                                entry.key.image,
+                                width: 48,
+                                height: 48,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             title: Text(
                               entry.key.name,
@@ -115,7 +120,7 @@ class _OrderPageState extends State<OrderPage> {
                               rupiah(entry.value * entry.key.price),
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFFB94E32),
+                                color: Color(0xFF173B63),
                               ),
                             ),
                           ),
@@ -201,7 +206,7 @@ class _OrderPageState extends State<OrderPage> {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w800,
                                     fontSize: 17,
-                                    color: Color(0xFFB94E32),
+                                    color: Color(0xFF173B63),
                                   ),
                                 ),
                               ],
@@ -241,7 +246,7 @@ class _OrderPageState extends State<OrderPage> {
                       child: FilledButton(
                         onPressed: _submit,
                         style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFFB94E32),
+                          backgroundColor: const Color(0xFF173B63),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
